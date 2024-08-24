@@ -43,11 +43,12 @@ jobs:
         run: |
           docker push ${{ secrets.DOCKER_USERNAME }}/password-generator-app:${{ github.sha }}
     
-      - name: Deploy to Kubernetes
+      - name: Set up kubectl
         uses: azure/setup-kubectl@v1
         with:
           version: '1.21.0'
 
+      - name: Deploy to Kubernetes
         run: |
           kubectl apply -f k8s/deployment.yaml
           kubectl apply -f k8s/service.yaml
