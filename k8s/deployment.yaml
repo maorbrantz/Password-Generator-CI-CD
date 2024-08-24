@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: password-generator-deployment
+  labels:
+    app: password-generator
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: password-generator
+  template:
+    metadata:
+      labels:
+        app: password-generator
+    spec:
+      containers:
+      - name: password-generator
+        image: maorbrantz/password-generator-app:latest
+        ports:
+        - containerPort: 5000
