@@ -1,23 +1,71 @@
-# Password Generator CI/CD
+# Password-Generator-App
 
-This project, **`password-generator-ci-cd`**, is a robust password generation tool designed with continuous integration and continuous deployment (CI/CD) in mind. The application automatically generates secure, random passwords using a variety of characters, including letters, numbers, and special symbols, ensuring high levels of security for different use cases.
+## Overview
+
+**Password-Generator-App** is a web application that generates secure and customizable passwords. Built with HTML, CSS, and JavaScript, the application is designed to help users create strong passwords for enhanced security.
 
 ## Features
 
-- **Secure Password Generation**: Generates strong, random passwords with configurable length and character types.
-- **Customizable Options**: Allows users to specify password length and include or exclude specific character types (e.g., numbers, symbols).
-- **User-Friendly Interface**: Provides a simple command-line interface (CLI) for easy usage.
-- **CI/CD Pipeline**: Implements a CI/CD pipeline using tools such as GitHub Actions for automated testing, building, and deployment.
-- **Automated Testing**: Includes unit tests to verify the correctness and security of password generation.
-- **Scalable Architecture**: Designed to be easily scalable and integrable with various applications and systems.
+- **Password Generation**: Generate secure and customizable passwords.
+- **User-Friendly Interface**: Simple and intuitive web interface.
+- **Responsive Design**: Works seamlessly across various devices and screen sizes.
 
-## Technologies Used
+## Infrastructure
 
-- **Programming Language**: Python
-- **CI/CD**: GitHub Actions
-- **Testing**: pytest for unit testing
-- **Version Control**: Git and GitHub
+The infrastructure for the Password-Generator-App is managed using Terraform (TF), which provides a consistent and reliable way to provision and manage cloud resources.
+
+## Containerization
+
+- **Docker**: The application is containerized using Docker, which allows for consistent development and deployment environments.
+- **DockerHub**: The Docker images are stored and managed on DockerHub.
+
+## Deployment
+
+- **Kubernetes EKS**: The application is deployed on Amazon EKS (Elastic Kubernetes Service) to manage containerized applications with Kubernetes.
+
+## CI/CD Pipeline
+
+- **GitHub Actions**: Continuous Integration and Continuous Deployment (CI/CD) are implemented using GitHub Actions. This automates the build, test, and deployment processes.
+
+## Monitoring (Future Enhancements)
+
+- **Grafana**: Will be used for creating dashboards and visualizing metrics.
+- **Prometheus**: Will be used for monitoring and alerting.
 
 ## Getting Started
 
-To get started with the password generator, clone the repository and follow the installation instructions provided in the README file. The project includes a setup script for easy installation of dependencies and environment configuration.
+### Prerequisites
+
+- Docker
+- Terraform
+- Kubernetes CLI (`kubectl`)
+- GitHub account with Actions enabled
+
+### Setup
+
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/yourusername/Password-Generator-App.git
+   cd Password-Generator-App
+
+2. **Build and Push Docker Image**
+   ```bash
+   docker build -t yourusername/password-generator-app:latest .
+   docker push yourusername/password-generator-app:latest
+
+3. **Provision Infrastructure with Terraform**
+   ```bash
+   cd terraform
+   terraform init
+   terraform apply
+   
+4. **Deploy to Kubernetes**
+   ```bash
+   kubectl apply -f Kubernetes_Manifests/deployment.yaml
+   kubectl apply -f Kubernetes_Manifests/service.yaml
+
+5. **Verify Deployment**
+   Check the status of the deployed pods and services:
+   ```bash
+   kubectl get pods
+   kubectl get services
